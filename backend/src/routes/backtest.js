@@ -1035,6 +1035,25 @@ function calculateStats(trades, capital, initialCapital, data, signals) {
   });
 
   return {
+    // summary 属性展开到根级别，兼容前端访问习惯
+    initialCapital,
+    finalCapital: capital,
+    totalReturn: returns,
+    annualizedReturn,
+    totalTrades: sellTrades.length,
+    winRate,
+    totalPnl,
+    profitFactor,
+    avgWin: avgWin.toFixed(2),
+    avgLoss: avgLoss.toFixed(2),
+    avgHoldingDays,
+    maxDrawdown: maxDrawdown.toFixed(2),
+    maxDrawdownDate,
+    sharpeRatio: sharpeRatio.toFixed(2),
+    sortinoRatio: sortinoRatio.toFixed(2),
+    calmarRatio: calmarRatio.toFixed(2),
+    tradingDays,
+    // 完整对象保留
     summary: {
       initialCapital,
       finalCapital: capital,

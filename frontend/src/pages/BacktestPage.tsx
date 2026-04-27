@@ -448,7 +448,7 @@ const BacktestPage: React.FC = () => {
                     <div className="text-xs text-[#71717a] mb-1">胜率</div>
                     <div className="text-3xl font-bold flex items-center justify-center gap-2" style={{ color: results.winRate > 0.5 ? colors.riseColor : colors.fallColor }}>
                       {results.winRate > 0.5 ? <RiseOutlined /> : <FallOutlined />}
-                      {(results.winRate * 100).toFixed(1)}%
+                      {Number(results.winRate * 100)?.toFixed(1) ?? '-'}%
                     </div>
                   </Card>
                 </Col>
@@ -457,20 +457,20 @@ const BacktestPage: React.FC = () => {
                     <div className="text-xs text-[#71717a] mb-1">总收益率</div>
                     <div className="text-3xl font-bold flex items-center justify-center gap-2" style={{ color: results.totalReturn > 0 ? colors.riseColor : colors.fallColor }}>
                       {results.totalReturn > 0 ? <RiseOutlined /> : <FallOutlined />}
-                      {results.totalReturn > 0 ? '+' : ''}{results.totalReturn.toFixed(2)}%
+                      {results.totalReturn > 0 ? '+' : ''}{Number(results.totalReturn)?.toFixed(2) ?? '0'}%
                     </div>
                   </Card>
                 </Col>
                 <Col xs={12} sm={8}>
                   <Card styles={{ body: { padding: '20px' } }} className="text-center">
                     <div className="text-xs text-[#71717a] mb-1">最大回撤</div>
-                    <div className="text-3xl font-bold" style={{ color: colors.fallColor }}>{results.maxDrawdown.toFixed(2)}%</div>
+                    <div className="text-3xl font-bold" style={{ color: colors.fallColor }}>{Number(results.maxDrawdown)?.toFixed(2) ?? '0'}%</div>
                   </Card>
                 </Col>
                 <Col xs={12} sm={8}>
                   <Card styles={{ body: { padding: '20px' } }} className="text-center">
                     <div className="text-xs text-[#71717a] mb-1">夏普比率</div>
-                    <div className="text-3xl font-bold text-white">{results.sharpeRatio.toFixed(2)}</div>
+                    <div className="text-3xl font-bold text-white">{Number(results.sharpeRatio)?.toFixed(2) ?? '0'}</div>
                   </Card>
                 </Col>
                 <Col xs={12} sm={8}>
